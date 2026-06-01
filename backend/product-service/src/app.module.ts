@@ -11,7 +11,7 @@ import { Product } from './product.entity';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'Micr@1232',
+      password: '',
       database: 'product_db',
       entities: [Product],
       synchronize: true,

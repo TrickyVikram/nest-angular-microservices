@@ -16,9 +16,14 @@
             "url": {
               "raw": "http://localhost:3000/api/users",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "3000",
-              "path": ["api", "users"]
+              "path": [
+                "api",
+                "users"
+              ]
             }
           }
         },
@@ -30,9 +35,15 @@
             "url": {
               "raw": "http://localhost:3000/api/users/1",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "3000",
-              "path": ["api", "users", "1"]
+              "path": [
+                "api",
+                "users",
+                "1"
+              ]
             }
           }
         },
@@ -54,9 +65,14 @@
             "url": {
               "raw": "http://localhost:3000/api/users",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "3000",
-              "path": ["api", "users"]
+              "path": [
+                "api",
+                "users"
+              ]
             }
           }
         },
@@ -78,9 +94,15 @@
             "url": {
               "raw": "http://localhost:3000/api/users/1",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "3000",
-              "path": ["api", "users", "1"]
+              "path": [
+                "api",
+                "users",
+                "1"
+              ]
             }
           }
         },
@@ -92,9 +114,15 @@
             "url": {
               "raw": "http://localhost:3000/api/users/1",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "3000",
-              "path": ["api", "users", "1"]
+              "path": [
+                "api",
+                "users",
+                "1"
+              ]
             }
           }
         }
@@ -111,9 +139,14 @@
             "url": {
               "raw": "http://localhost:3000/api/products",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "3000",
-              "path": ["api", "products"]
+              "path": [
+                "api",
+                "products"
+              ]
             }
           }
         },
@@ -125,9 +158,15 @@
             "url": {
               "raw": "http://localhost:3000/api/products/1",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "3000",
-              "path": ["api", "products", "1"]
+              "path": [
+                "api",
+                "products",
+                "1"
+              ]
             }
           }
         },
@@ -149,9 +188,14 @@
             "url": {
               "raw": "http://localhost:3000/api/products",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "3000",
-              "path": ["api", "products"]
+              "path": [
+                "api",
+                "products"
+              ]
             }
           }
         },
@@ -173,9 +217,15 @@
             "url": {
               "raw": "http://localhost:3000/api/products/1",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "3000",
-              "path": ["api", "products", "1"]
+              "path": [
+                "api",
+                "products",
+                "1"
+              ]
             }
           }
         },
@@ -187,9 +237,15 @@
             "url": {
               "raw": "http://localhost:3000/api/products/1",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "3000",
-              "path": ["api", "products", "1"]
+              "path": [
+                "api",
+                "products",
+                "1"
+              ]
             }
           }
         }
@@ -206,9 +262,14 @@
             "url": {
               "raw": "http://localhost:3000/api/orders",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "3000",
-              "path": ["api", "orders"]
+              "path": [
+                "api",
+                "orders"
+              ]
             }
           }
         },
@@ -220,9 +281,15 @@
             "url": {
               "raw": "http://localhost:3000/api/orders/101",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "3000",
-              "path": ["api", "orders", "101"]
+              "path": [
+                "api",
+                "orders",
+                "101"
+              ]
             }
           }
         },
@@ -244,9 +311,14 @@
             "url": {
               "raw": "http://localhost:3000/api/orders",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "3000",
-              "path": ["api", "orders"]
+              "path": [
+                "api",
+                "orders"
+              ]
             }
           }
         },
@@ -268,9 +340,15 @@
             "url": {
               "raw": "http://localhost:3000/api/orders/101",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "3000",
-              "path": ["api", "orders", "101"]
+              "path": [
+                "api",
+                "orders",
+                "101"
+              ]
             }
           }
         },
@@ -282,9 +360,15 @@
             "url": {
               "raw": "http://localhost:3000/api/orders/101",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "3000",
-              "path": ["api", "orders", "101"]
+              "path": [
+                "api",
+                "orders",
+                "101"
+              ]
             }
           }
         }

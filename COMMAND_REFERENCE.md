@@ -3,12 +3,14 @@
 ## 🚀 Quick Start Commands
 
 ### Mac/Linux - Automatic Setup (Recommended)
+
 ```bash
 chmod +x start-services.sh
 bash start-services.sh install-and-start
 ```
 
 ### Windows - Automatic Setup
+
 ```cmd
 start-services.bat install-and-start
 ```
@@ -16,6 +18,7 @@ start-services.bat install-and-start
 ### Manual Start (All Platforms)
 
 **Terminal 1 - User Service:**
+
 ```bash
 cd backend/user-service
 npm install
@@ -23,6 +26,7 @@ npm run start:dev
 ```
 
 **Terminal 2 - Product Service:**
+
 ```bash
 cd backend/product-service
 npm install
@@ -30,6 +34,7 @@ npm run start:dev
 ```
 
 **Terminal 3 - Order Service:**
+
 ```bash
 cd backend/order-service
 npm install
@@ -37,6 +42,7 @@ npm run start:dev
 ```
 
 **Terminal 4 - API Gateway:**
+
 ```bash
 cd backend/api-gateway
 npm install
@@ -48,18 +54,21 @@ npm run start:dev
 ## 📦 NPM Commands (For Each Service)
 
 ### Development
+
 ```bash
 npm run start:dev      # Start with hot reload (development)
 npm run start:debug    # Start in debug mode
 ```
 
 ### Production
+
 ```bash
 npm run build          # Build TypeScript to JavaScript
 npm run start:prod     # Start production build
 ```
 
 ### Testing
+
 ```bash
 npm run test           # Run unit tests
 npm run test:watch     # Run tests in watch mode
@@ -69,6 +78,7 @@ npm run test:e2e       # Run end-to-end tests
 ```
 
 ### Code Quality
+
 ```bash
 npm run lint           # Run ESLint
 npm run lint -- --fix  # Fix linting issues automatically
@@ -76,6 +86,7 @@ npm run format         # Format code with Prettier
 ```
 
 ### Build & Package
+
 ```bash
 npm run build          # Production build
 npm install            # Install dependencies
@@ -91,6 +102,7 @@ npm audit fix          # Fix security vulnerabilities
 ## 🐳 Docker Commands
 
 ### Build & Run
+
 ```bash
 # Build all containers
 docker-compose build
@@ -109,6 +121,7 @@ docker-compose down -v
 ```
 
 ### Manage Services
+
 ```bash
 # Restart services
 docker-compose restart
@@ -130,6 +143,7 @@ docker-compose logs -f api-gateway
 ```
 
 ### Database
+
 ```bash
 # Access MySQL container
 docker-compose exec mysql mysql -u root -pMicr@1232
@@ -146,6 +160,7 @@ docker-compose exec -T mysql mysql -u root -pMicr@1232 user_db < user_db_backup.
 ## 🔌 Port Management (Mac/Linux)
 
 ### Check Ports
+
 ```bash
 # List all processes using ports
 lsof -i -P -n
@@ -159,6 +174,7 @@ lsof -i :3306  # MySQL
 ```
 
 ### Kill Process
+
 ```bash
 # Kill specific process
 kill -9 <PID>
@@ -175,6 +191,7 @@ kill -9 $(lsof -t -i :3003)
 ## 🔌 Port Management (Windows)
 
 ### Check Ports
+
 ```cmd
 # List all connections
 netstat -ano
@@ -185,6 +202,7 @@ netstat -ano | findstr :3001
 ```
 
 ### Kill Process
+
 ```cmd
 # Kill by PID
 taskkill /PID <PID> /F
@@ -198,6 +216,7 @@ for /f "tokens=5" %a in ('netstat -ano ^| findstr :3000') do taskkill /PID %a /F
 ## 💾 Database Commands
 
 ### MySQL CLI
+
 ```bash
 # Connect to MySQL
 mysql -u root -p
@@ -231,6 +250,7 @@ EXIT;
 ```
 
 ### Execute SQL File
+
 ```bash
 # Initialize databases
 mysql -u root -p < init-databases.sql
@@ -303,6 +323,7 @@ curl -X POST http://localhost:3000/api/orders \
 ## 📝 Git Commands
 
 ### Initialize Repository
+
 ```bash
 git init
 git add .
@@ -312,6 +333,7 @@ git push -u origin main
 ```
 
 ### Common Git Commands
+
 ```bash
 # Check status
 git status
@@ -346,6 +368,7 @@ git merge feature/new-feature
 ## 📊 Monitoring & Logs
 
 ### View Service Logs
+
 ```bash
 # Terminal running user-service
 # Shows real-time logs
@@ -358,6 +381,7 @@ docker-compose logs -f api-gateway
 ```
 
 ### Check Service Health
+
 ```bash
 # Test API Gateway
 curl http://localhost:3000/api/users
@@ -377,6 +401,7 @@ curl http://localhost:3003/api/orders
 ## 🔄 Update & Rebuild
 
 ### Update Dependencies
+
 ```bash
 # Update all dependencies
 npm update
@@ -389,6 +414,7 @@ npm outdated
 ```
 
 ### Rebuild Services
+
 ```bash
 # Clean build
 npm run build
@@ -407,6 +433,7 @@ npm run build
 ## 🐛 Debugging
 
 ### Debug User Service
+
 ```bash
 npm run start:debug
 
@@ -416,11 +443,13 @@ npm run start:debug
 ```
 
 ### Debug Tests
+
 ```bash
 node --inspect-brk -r ts-node/register ./node_modules/.bin/jest --runInBand
 ```
 
 ### View Environment
+
 ```bash
 # Show all environment variables
 env
@@ -435,11 +464,13 @@ echo $PORT
 ## 🧹 Cleanup Commands
 
 ### Clear npm Cache
+
 ```bash
 npm cache clean --force
 ```
 
 ### Remove node_modules
+
 ```bash
 rm -rf node_modules
 rm package-lock.json
@@ -447,6 +478,7 @@ npm install
 ```
 
 ### Clear Docker
+
 ```bash
 # Remove containers
 docker-compose down
@@ -466,6 +498,7 @@ docker system prune -a --volumes
 ## 📋 File Operations
 
 ### Navigate Directories
+
 ```bash
 # Go to service
 cd backend/user-service
@@ -484,6 +517,7 @@ ls -la
 ```
 
 ### View Files
+
 ```bash
 # Display file contents
 cat filename
@@ -503,6 +537,7 @@ tail -n 10 filename
 ## 🔍 Search & Find
 
 ### Search Code
+
 ```bash
 # Find in files (case-insensitive)
 grep -r "pattern" .
@@ -519,6 +554,7 @@ find backend/user-service -name "*.ts"
 ## 📱 Service Status Verification
 
 ### Check All Services
+
 ```bash
 # Create simple health check script
 curl http://localhost:3000/api/users && echo "✓ API Gateway"
@@ -532,6 +568,7 @@ curl http://localhost:3003/api/orders && echo "✓ Order Service"
 ## ⚙️ Configuration
 
 ### Environment Variables
+
 ```bash
 # Create .env file
 echo "PORT=3001" > .env
@@ -545,6 +582,7 @@ nano .env  # or vim .env
 ```
 
 ### Update Configuration
+
 ```bash
 # Edit app.module.ts for database config
 # Edit main.ts for port config

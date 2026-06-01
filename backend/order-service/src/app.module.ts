@@ -11,7 +11,7 @@ import { Order } from './order.entity';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'Micr@1232',
+      password: '',
       database: 'order_db',
       entities: [Order],
       synchronize: true,

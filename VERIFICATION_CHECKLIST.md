@@ -3,27 +3,32 @@
 ## Pre-Startup Verification
 
 - [ ] Node.js 20.x or higher installed
+
   ```bash
   node --version
   ```
 
 - [ ] npm 10.x or higher installed
+
   ```bash
   npm --version
   ```
 
 - [ ] MySQL 8.0 installed and running
+
   ```bash
   mysql --version
   mysql -u root -p -e "SELECT VERSION();"
   ```
 
 - [ ] Ports 3000-3003 available (not in use)
+
   ```bash
   lsof -i :3000  # Should show nothing
   ```
 
 - [ ] Git installed (optional)
+
   ```bash
   git --version
   ```
@@ -38,35 +43,36 @@
 ## Database Setup Verification
 
 ### Step 1: Create Databases
+
 - [ ] Run SQL initialization script
   ```bash
   mysql -u root -p < init-databases.sql
   ```
 
 ### Step 2: Verify Databases Created
+
 - [ ] Connect to MySQL
   ```bash
   mysql -u root -p
   ```
-  
 - [ ] List all databases
   ```sql
   SHOW DATABASES;
   ```
-  
 - [ ] Should see:
   - [ ] `user_db`
   - [ ] `product_db`
   - [ ] `order_db`
 
 ### Step 3: Verify Tables
+
 - [ ] Use user database
   ```sql
   USE user_db;
   SHOW TABLES;
   ```
-  
 - [ ] Should see `users` table
+
   ```sql
   DESC users;
   SELECT * FROM users;
@@ -79,11 +85,13 @@
 ## Dependencies Installation Verification
 
 ### For Each Service:
+
 ```bash
 cd backend/<service-name>
 ```
 
 - [ ] Install dependencies
+
   ```bash
   npm install
   ```
@@ -96,6 +104,7 @@ cd backend/<service-name>
   - [ ] `mysql2`
 
 - [ ] Verify node_modules exists
+
   ```bash
   ls -la | grep node_modules
   ```
@@ -110,24 +119,28 @@ cd backend/<service-name>
 ## Service Files Verification
 
 ### User Service
+
 - [ ] `src/user.entity.ts` exists
 - [ ] `src/user.service.ts` exists
 - [ ] `src/user.controller.ts` exists
 - [ ] `src/app.module.ts` configured for TypeORM
 
 ### Product Service
+
 - [ ] `src/product.entity.ts` exists
 - [ ] `src/product.service.ts` exists
 - [ ] `src/product.controller.ts` exists
 - [ ] `src/app.module.ts` configured for TypeORM
 
 ### Order Service
+
 - [ ] `src/order.entity.ts` exists
 - [ ] `src/order.service.ts` exists
 - [ ] `src/order.controller.ts` exists
 - [ ] `src/app.module.ts` configured for TypeORM
 
 ### API Gateway
+
 - [ ] `src/api-gateway.service.ts` exists
 - [ ] `src/api-gateway.controller.ts` exists
 - [ ] `src/app.module.ts` configured with gateway
@@ -137,6 +150,7 @@ cd backend/<service-name>
 ## Pre-Launch Verification
 
 ### Compile Check
+
 ```bash
 # For each service
 npm run build
@@ -148,6 +162,7 @@ npm run build
 - [ ] Build succeeds for api-gateway
 
 ### TypeScript Check
+
 ```bash
 npm run lint
 ```
@@ -159,6 +174,7 @@ npm run lint
 ## Startup Verification
 
 ### Terminal 1: User Service (Port 3001)
+
 ```bash
 cd backend/user-service
 npm run start:dev
@@ -169,6 +185,7 @@ npm run start:dev
 - [ ] Database connection successful
 
 ### Terminal 2: Product Service (Port 3002)
+
 ```bash
 cd backend/product-service
 npm run start:dev
@@ -179,6 +196,7 @@ npm run start:dev
 - [ ] Database connection successful
 
 ### Terminal 3: Order Service (Port 3003)
+
 ```bash
 cd backend/order-service
 npm run start:dev
@@ -189,6 +207,7 @@ npm run start:dev
 - [ ] Database connection successful
 
 ### Terminal 4: API Gateway (Port 3000)
+
 ```bash
 cd backend/api-gateway
 npm run start:dev
@@ -203,6 +222,7 @@ npm run start:dev
 ## API Endpoint Verification
 
 ### Test User Service
+
 ```bash
 curl http://localhost:3000/api/users
 ```
@@ -212,6 +232,7 @@ curl http://localhost:3000/api/users
 - [ ] No error response
 
 ### Test Product Service
+
 ```bash
 curl http://localhost:3000/api/products
 ```
@@ -221,6 +242,7 @@ curl http://localhost:3000/api/products
 - [ ] No error response
 
 ### Test Order Service
+
 ```bash
 curl http://localhost:3000/api/orders
 ```
@@ -234,20 +256,25 @@ curl http://localhost:3000/api/orders
 ## CRUD Operations Verification
 
 ### Create Operations
+
 - [ ] Create User
+
   ```bash
   curl -X POST http://localhost:3000/api/users \
     -H "Content-Type: application/json" \
     -d '{"name":"Test","email":"test@test.com","role":"User"}'
   ```
+
   - [ ] Returns 201/200 with new user object
 
 - [ ] Create Product
+
   ```bash
   curl -X POST http://localhost:3000/api/products \
     -H "Content-Type: application/json" \
     -d '{"name":"Desktop","price":50000}'
   ```
+
   - [ ] Returns 201/200 with new product object
 
 - [ ] Create Order
@@ -256,9 +283,11 @@ curl http://localhost:3000/api/orders
     -H "Content-Type: application/json" \
     -d '{"product_id":1,"status":"Pending"}'
   ```
+
   - [ ] Returns 201/200 with new order object
 
 ### Read Operations
+
 - [ ] Get all users: `curl http://localhost:3000/api/users`
   - [ ] Returns array of users
 
@@ -268,19 +297,23 @@ curl http://localhost:3000/api/orders
 - [ ] Same verification for products and orders
 
 ### Update Operations
+
 - [ ] Update user
   ```bash
   curl -X PUT http://localhost:3000/api/users/1 \
     -H "Content-Type: application/json" \
     -d '{"name":"Updated","email":"updated@test.com","role":"Admin"}'
   ```
+
   - [ ] Returns updated user object
 
 ### Delete Operations
+
 - [ ] Delete user
   ```bash
   curl -X DELETE http://localhost:3000/api/users/2
   ```
+
   - [ ] Returns success message
 
 ---
@@ -288,6 +321,7 @@ curl http://localhost:3000/api/orders
 ## Database Persistence Verification
 
 ### Verify Data Saved
+
 ```bash
 mysql -u root -p -e "SELECT * FROM user_db.users;"
 mysql -u root -p -e "SELECT * FROM product_db.products;"
@@ -303,6 +337,7 @@ mysql -u root -p -e "SELECT * FROM order_db.orders;"
 ## Performance Verification
 
 ### Response Time Check
+
 ```bash
 # Should respond in < 100ms
 curl -w "Response time: %{time_total}s\n" http://localhost:3000/api/users
@@ -318,21 +353,25 @@ curl -w "Response time: %{time_total}s\n" http://localhost:3000/api/users
 ## Error Handling Verification
 
 ### Test Error Scenarios
+
 - [ ] Get non-existent user: `curl http://localhost:3000/api/users/9999`
   - [ ] Returns null or empty object
 
 - [ ] Invalid POST data
+
   ```bash
   curl -X POST http://localhost:3000/api/users \
     -H "Content-Type: application/json" \
     -d '{"name":"Test"}'  # Missing email and role
   ```
+
   - [ ] Returns validation error
 
 - [ ] Wrong HTTP method
   ```bash
   curl -X PUT http://localhost:3000/api/users  # Wrong method for create
   ```
+
   - [ ] Returns appropriate error
 
 ---
@@ -340,12 +379,14 @@ curl -w "Response time: %{time_total}s\n" http://localhost:3000/api/users
 ## Logging Verification
 
 ### Check Console Output
+
 - [ ] Each service shows startup messages
 - [ ] Database connection logs visible
 - [ ] Request logs show in console
 - [ ] Error messages are informative
 
 ### Example: Should See
+
 ```
 [Nest] ... - 01/01/2024, 00:00:00 AM     LOG [NestFactory] Starting Nest application...
 [Nest] ... - 01/01/2024, 00:00:00 AM     LOG [InstanceLoader] TypeOrmModule dependencies initialized
@@ -378,17 +419,20 @@ curl -w "Response time: %{time_total}s\n" http://localhost:3000/api/users
 ## Additional Verification
 
 ### Docker Verification (if using)
+
 - [ ] `docker-compose.yml` exists
 - [ ] `Dockerfile` exists for each service
 - [ ] Docker images build successfully
 - [ ] Services start in Docker
 
 ### Testing Verification
+
 - [ ] Unit tests exist: `npm run test`
 - [ ] E2E tests exist: `npm run test:e2e`
 - [ ] Tests pass (optional for now)
 
 ### Code Quality Verification
+
 - [ ] Linting passes: `npm run lint`
 - [ ] No critical issues
 - [ ] Code is formatted: `npm run format`
@@ -412,15 +456,15 @@ curl -w "Response time: %{time_total}s\n" http://localhost:3000/api/users
 
 ## Troubleshooting If Failed
 
-| Issue | Solution |
-|-------|----------|
-| Port already in use | See "Port Management" in COMMAND_REFERENCE.md |
-| MySQL connection error | Verify MySQL running, check credentials |
-| Dependencies missing | Run `npm install` in each service |
-| Build fails | Clear node_modules, run `npm install` again |
-| Endpoint not responding | Check if service is actually running |
-| Database tables missing | Run `init-databases.sql` |
-| Slow response | Check database query performance |
+| Issue                   | Solution                                      |
+| ----------------------- | --------------------------------------------- |
+| Port already in use     | See "Port Management" in COMMAND_REFERENCE.md |
+| MySQL connection error  | Verify MySQL running, check credentials       |
+| Dependencies missing    | Run `npm install` in each service             |
+| Build fails             | Clear node_modules, run `npm install` again   |
+| Endpoint not responding | Check if service is actually running          |
+| Database tables missing | Run `init-databases.sql`                      |
+| Slow response           | Check database query performance              |
 
 ---
 

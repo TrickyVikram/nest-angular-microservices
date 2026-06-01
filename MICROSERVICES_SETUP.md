@@ -1,7 +1,9 @@
 # Microservices Architecture Setup Guide
 
 ## Overview
+
 This project implements a microservices architecture with:
+
 - **API Gateway** (Port 3000): Central entry point for all requests
 - **User Service** (Port 3001): Manages user data
 - **Product Service** (Port 3002): Manages product data
@@ -12,6 +14,7 @@ Each service has its own MySQL database.
 ## Database Configuration
 
 ### Database Credentials
+
 - **Username**: root
 - **Password**: Micr@1232
 - **Host**: localhost
@@ -35,6 +38,7 @@ CREATE DATABASE order_db;
 ### Database Structure
 
 #### user_db.users table
+
 ```sql
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -43,11 +47,12 @@ CREATE TABLE users (
   role VARCHAR(100) NOT NULL
 );
 
-INSERT INTO users (name, email, role) VALUES 
+INSERT INTO users (name, email, role) VALUES
 ('Vikram Kumar', 'vikram@terknox.com', 'Admin');
 ```
 
 #### product_db.products table
+
 ```sql
 CREATE TABLE products (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -55,11 +60,12 @@ CREATE TABLE products (
   price DECIMAL(10, 2) NOT NULL
 );
 
-INSERT INTO products (name, price) VALUES 
+INSERT INTO products (name, price) VALUES
 ('Laptop', 65000);
 ```
 
 #### order_db.orders table
+
 ```sql
 CREATE TABLE orders (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -67,13 +73,14 @@ CREATE TABLE orders (
   status VARCHAR(100) NOT NULL
 );
 
-INSERT INTO orders (product_id, status) VALUES 
+INSERT INTO orders (product_id, status) VALUES
 (1, 'Delivered');
 ```
 
 ## API Endpoints (via API Gateway)
 
 ### Users API
+
 - **GET** `http://localhost:3000/api/users` - Get all users
 - **GET** `http://localhost:3000/api/users/:id` - Get user by ID
 - **POST** `http://localhost:3000/api/users` - Create user
@@ -81,6 +88,7 @@ INSERT INTO orders (product_id, status) VALUES
 - **DELETE** `http://localhost:3000/api/users/:id` - Delete user
 
 ### Products API
+
 - **GET** `http://localhost:3000/api/products` - Get all products
 - **GET** `http://localhost:3000/api/products/:id` - Get product by ID
 - **POST** `http://localhost:3000/api/products` - Create product
@@ -88,6 +96,7 @@ INSERT INTO orders (product_id, status) VALUES
 - **DELETE** `http://localhost:3000/api/products/:id` - Delete product
 
 ### Orders API
+
 - **GET** `http://localhost:3000/api/orders` - Get all orders
 - **GET** `http://localhost:3000/api/orders/:id` - Get order by ID
 - **POST** `http://localhost:3000/api/orders` - Create order
@@ -145,11 +154,13 @@ npm run start:dev
 ### Sample Request & Response
 
 **Request:**
+
 ```bash
 curl http://localhost:3000/api/users
 ```
 
 **Response:**
+
 ```json
 [
   {
@@ -164,6 +175,7 @@ curl http://localhost:3000/api/users
 ## Database Management
 
 Access phpMyAdmin:
+
 - `http://localhost/phpmyadmin/index.php?route=/database/structure&db=user_db`
 - `http://localhost/phpmyadmin/index.php?route=/database/structure&db=product_db`
 - `http://localhost/phpmyadmin/index.php?route=/database/structure&db=order_db`
@@ -202,6 +214,7 @@ Access phpMyAdmin:
 ## Troubleshooting
 
 ### Port Already in Use
+
 ```bash
 # Find process using port
 lsof -i :3000
@@ -211,11 +224,13 @@ kill -9 <PID>
 ```
 
 ### MySQL Connection Error
+
 - Ensure MySQL is running
 - Verify credentials in app.module.ts
 - Check database exists
 
 ### CORS Issues
+
 - API Gateway handles CORS by default
 - Add CORS configuration if needed in main.ts
 
@@ -239,3 +254,4 @@ npm run format
 
 # Lint code
 npm run lint
+```

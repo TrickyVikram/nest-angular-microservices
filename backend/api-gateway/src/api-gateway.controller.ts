@@ -6,252 +6,146 @@ import {
   Delete,
   Param,
   Body,
-  Res,
 } from '@nestjs/common';
 import { ApiGatewayService } from './api-gateway.service';
-import { Response } from 'express';
 
 @Controller('api')
 export class ApiGatewayController {
   constructor(private readonly apiGatewayService: ApiGatewayService) {}
 
-  // User Service Routes
   @Get('users')
-  async getAllUsers(@Res() res: Response) {
-    try {
-      const data = await this.apiGatewayService.proxyRequest(
-        'users',
-        'GET',
-        '/api/users',
-      );
-      return res.json(data);
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
-    }
+  getAllUsers() {
+    return this.apiGatewayService.proxyRequest('users', 'GET', '/api/users');
   }
 
   @Get('users/:id')
-  async getUserById(
-    @Param('id') id: number,
-    @Res() res: Response,
-  ) {
-    try {
-      const data = await this.apiGatewayService.proxyRequest(
-        'users',
-        'GET',
-        `/api/users/${id}`,
-      );
-      return res.json(data);
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
-    }
+  getUserById(@Param('id') id: string) {
+    return this.apiGatewayService.proxyRequest(
+      'users',
+      'GET',
+      `/api/users/${id}`,
+    );
   }
 
   @Post('users')
-  async createUser(@Body() user: any, @Res() res: Response) {
-    try {
-      const data = await this.apiGatewayService.proxyRequest(
-        'users',
-        'POST',
-        '/api/users',
-        user,
-      );
-      return res.json(data);
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
-    }
+  createUser(@Body() user: any) {
+    return this.apiGatewayService.proxyRequest(
+      'users',
+      'POST',
+      '/api/users',
+      user,
+    );
   }
 
   @Put('users/:id')
-  async updateUser(
-    @Param('id') id: number,
-    @Body() user: any,
-    @Res() res: Response,
-  ) {
-    try {
-      const data = await this.apiGatewayService.proxyRequest(
-        'users',
-        'PUT',
-        `/api/users/${id}`,
-        user,
-      );
-      return res.json(data);
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
-    }
+  updateUser(@Param('id') id: string, @Body() user: any) {
+    return this.apiGatewayService.proxyRequest(
+      'users',
+      'PUT',
+      `/api/users/${id}`,
+      user,
+    );
   }
 
   @Delete('users/:id')
-  async deleteUser(@Param('id') id: number, @Res() res: Response) {
-    try {
-      await this.apiGatewayService.proxyRequest(
-        'users',
-        'DELETE',
-        `/api/users/${id}`,
-      );
-      return res.json({ message: 'User deleted' });
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
-    }
+  async deleteUser(@Param('id') id: string) {
+    await this.apiGatewayService.proxyRequest(
+      'users',
+      'DELETE',
+      `/api/users/${id}`,
+    );
+    return { message: 'User deleted successfully' };
   }
 
-  // Product Service Routes
   @Get('products')
-  async getAllProducts(@Res() res: Response) {
-    try {
-      const data = await this.apiGatewayService.proxyRequest(
-        'products',
-        'GET',
-        '/api/products',
-      );
-      return res.json(data);
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
-    }
+  getAllProducts() {
+    return this.apiGatewayService.proxyRequest(
+      'products',
+      'GET',
+      '/api/products',
+    );
   }
 
   @Get('products/:id')
-  async getProductById(
-    @Param('id') id: number,
-    @Res() res: Response,
-  ) {
-    try {
-      const data = await this.apiGatewayService.proxyRequest(
-        'products',
-        'GET',
-        `/api/products/${id}`,
-      );
-      return res.json(data);
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
-    }
+  getProductById(@Param('id') id: string) {
+    return this.apiGatewayService.proxyRequest(
+      'products',
+       'GET',
+       `/api/products/${id}`,
+    );
   }
 
   @Post('products')
-  async createProduct(@Body() product: any, @Res() res: Response) {
-    try {
-      const data = await this.apiGatewayService.proxyRequest(
-        'products',
-        'POST',
-        '/api/products',
-        product,
-      );
-      return res.json(data);
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
-    }
+  createProduct(@Body() product: any) {
+    return this.apiGatewayService.proxyRequest(
+      'products',
+      'POST',
+      '/api/products',
+      product,
+    );
   }
 
   @Put('products/:id')
-  async updateProduct(
-    @Param('id') id: number,
-    @Body() product: any,
-    @Res() res: Response,
-  ) {
-    try {
-      const data = await this.apiGatewayService.proxyRequest(
-        'products',
-        'PUT',
-        `/api/products/${id}`,
-        product,
-      );
-      return res.json(data);
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
-    }
+  updateProduct(@Param('id') id: string, @Body() product: any) {
+    return this.apiGatewayService.proxyRequest(
+      'products',
+      'PUT',
+      `/api/products/${id}`,
+      product,
+    );
   }
 
   @Delete('products/:id')
-  async deleteProduct(@Param('id') id: number, @Res() res: Response) {
-    try {
-      await this.apiGatewayService.proxyRequest(
-        'products',
-        'DELETE',
-        `/api/products/${id}`,
-      );
-      return res.json({ message: 'Product deleted' });
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
-    }
+  async deleteProduct(@Param('id') id: string) {
+    await this.apiGatewayService.proxyRequest(
+      'products',
+      'DELETE',
+      `/api/products/${id}`,
+    );
+    return { message: 'Product deleted successfully' };
   }
 
-  // Order Service Routes
   @Get('orders')
-  async getAllOrders(@Res() res: Response) {
-    try {
-      const data = await this.apiGatewayService.proxyRequest(
-        'orders',
-        'GET',
-        '/api/orders',
-      );
-      return res.json(data);
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
-    }
+  getAllOrders() {
+    return this.apiGatewayService.proxyRequest('orders', 'GET', '/api/orders');
   }
 
   @Get('orders/:id')
-  async getOrderById(
-    @Param('id') id: number,
-    @Res() res: Response,
-  ) {
-    try {
-      const data = await this.apiGatewayService.proxyRequest(
-        'orders',
-        'GET',
-        `/api/orders/${id}`,
-      );
-      return res.json(data);
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
-    }
+  getOrderById(@Param('id') id: string) {
+    return this.apiGatewayService.proxyRequest(
+      'orders',
+      'GET',
+      `/api/orders/${id}`,
+    );
   }
 
   @Post('orders')
-  async createOrder(@Body() order: any, @Res() res: Response) {
-    try {
-      const data = await this.apiGatewayService.proxyRequest(
-        'orders',
-        'POST',
-        '/api/orders',
-        order,
-      );
-      return res.json(data);
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
-    }
+  createOrder(@Body() order: any) {
+    return this.apiGatewayService.proxyRequest(
+      'orders',
+      'POST',
+      '/api/orders',
+      order,
+    );
   }
 
   @Put('orders/:id')
-  async updateOrder(
-    @Param('id') id: number,
-    @Body() order: any,
-    @Res() res: Response,
-  ) {
-    try {
-      const data = await this.apiGatewayService.proxyRequest(
-        'orders',
-        'PUT',
-        `/api/orders/${id}`,
-        order,
-      );
-      return res.json(data);
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
-    }
+  updateOrder(@Param('id') id: string, @Body() order: any) {
+    return this.apiGatewayService.proxyRequest(
+      'orders',
+      'PUT',
+      `/api/orders/${id}`,
+      order,
+    );
   }
 
   @Delete('orders/:id')
-  async deleteOrder(@Param('id') id: number, @Res() res: Response) {
-    try {
-      await this.apiGatewayService.proxyRequest(
-        'orders',
-        'DELETE',
-        `/api/orders/${id}`,
-      );
-      return res.json({ message: 'Order deleted' });
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
-    }
+  async deleteOrder(@Param('id') id: string) {
+    await this.apiGatewayService.proxyRequest(
+      'orders',
+      'DELETE',
+      `/api/orders/${id}`,
+    );
+    return { message: 'Order deleted successfully' };
   }
 }

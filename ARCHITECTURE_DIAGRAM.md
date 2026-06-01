@@ -54,6 +54,7 @@
 ## Database Schema
 
 ### user_db.users
+
 ```
 ┌─────────────────────────────────┐
 │          USERS                  │
@@ -68,6 +69,7 @@
 ```
 
 ### product_db.products
+
 ```
 ┌─────────────────────────────────┐
 │       PRODUCTS                  │
@@ -81,6 +83,7 @@
 ```
 
 ### order_db.orders
+
 ```
 ┌─────────────────────────────────┐
 │        ORDERS                   │
@@ -96,6 +99,7 @@
 ## API Request Flow
 
 ### Example: Get All Users
+
 ```
 ┌─────────────┐
 │   Client    │

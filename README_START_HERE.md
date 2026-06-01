@@ -41,17 +41,17 @@ Databases:
 
 ### 📁 Key Files Created
 
-| File | Purpose |
-|------|---------|
-| `QUICK_START.md` | **👈 START HERE!** Quick start guide |
-| `MICROSERVICES_SETUP.md` | Complete setup guide with examples |
-| `SETUP_COMPLETE.md` | Detailed summary of what was created |
-| `backend/README.md` | Backend documentation |
-| `docker-compose.yml` | Docker setup |
-| `Postman_Collection.json` | Postman collection for testing |
-| `start-services.sh` | Startup script (Mac/Linux) |
-| `start-services.bat` | Startup script (Windows) |
-| `init-databases.sql` | Database initialization script |
+| File                      | Purpose                              |
+| ------------------------- | ------------------------------------ |
+| `QUICK_START.md`          | **👈 START HERE!** Quick start guide |
+| `MICROSERVICES_SETUP.md`  | Complete setup guide with examples   |
+| `SETUP_COMPLETE.md`       | Detailed summary of what was created |
+| `backend/README.md`       | Backend documentation                |
+| `docker-compose.yml`      | Docker setup                         |
+| `Postman_Collection.json` | Postman collection for testing       |
+| `start-services.sh`       | Startup script (Mac/Linux)           |
+| `start-services.bat`      | Startup script (Windows)             |
+| `init-databases.sql`      | Database initialization script       |
 
 ---
 
@@ -95,6 +95,7 @@ docker-compose up --build
 All endpoints are accessible via the API Gateway at: `http://localhost:3000/api`
 
 ### Users API
+
 ```
 GET     /api/users          → Get all users
 GET     /api/users/:id      → Get user by ID
@@ -104,6 +105,7 @@ DELETE  /api/users/:id      → Delete user
 ```
 
 ### Products API
+
 ```
 GET     /api/products       → Get all products
 GET     /api/products/:id   → Get product by ID
@@ -113,6 +115,7 @@ DELETE  /api/products/:id   → Delete product
 ```
 
 ### Orders API
+
 ```
 GET     /api/orders         → Get all orders
 GET     /api/orders/:id     → Get order by ID
@@ -171,13 +174,13 @@ After running the startup script, verify all services are running:
 
 Refer to these files for detailed information:
 
-| File | Content |
-|------|---------|
-| `QUICK_START.md` | Quick setup instructions (5 mins) |
-| `MICROSERVICES_SETUP.md` | Complete setup guide with DB instructions |
-| `backend/README.md` | Full backend documentation |
-| `API_ENDPOINTS.txt` | API reference guide |
-| `Postman_Collection.json` | Import into Postman for testing |
+| File                      | Content                                   |
+| ------------------------- | ----------------------------------------- |
+| `QUICK_START.md`          | Quick setup instructions (5 mins)         |
+| `MICROSERVICES_SETUP.md`  | Complete setup guide with DB instructions |
+| `backend/README.md`       | Full backend documentation                |
+| `API_ENDPOINTS.txt`       | API reference guide                       |
+| `Postman_Collection.json` | Import into Postman for testing           |
 
 ---
 
@@ -200,14 +203,17 @@ npm run format        # Format code
 ## 💾 DATABASE SETUP
 
 ### Option 1: Automatic (Recommended)
+
 The databases will be auto-created when services connect (TypeORM synchronize: true)
 
 ### Option 2: Manual with phpMyAdmin
+
 1. Go to: `http://localhost/phpmyadmin`
 2. Create databases: `user_db`, `product_db`, `order_db`
 3. Run sample queries from `init-databases.sql`
 
 ### Option 3: MySQL CLI
+
 ```bash
 mysql -u root -p < init-databases.sql
 ```
@@ -230,6 +236,7 @@ mysql -u root -p < init-databases.sql
 ## 🔍 MONITORING & TROUBLESHOOTING
 
 ### Check Service Status
+
 ```bash
 # macOS/Linux
 lsof -i :3000  # Check if port 3000 is in use
@@ -238,12 +245,14 @@ lsof -i :3001  # Check if port 3001 is in use
 ```
 
 ### View Logs
+
 - Check terminal output for each service
 - Look for errors or warnings
 
 ### Common Issues
 
 **Port Already in Use**
+
 ```bash
 # macOS/Linux
 kill -9 $(lsof -t -i :3000)
@@ -254,11 +263,13 @@ taskkill /PID <PID> /F
 ```
 
 **MySQL Connection Error**
+
 - Ensure MySQL is running
 - Verify credentials: `root` / `Micr@1232`
 - Check if databases exist
 
 **Dependencies Missing**
+
 ```bash
 cd <service-directory>
 rm -rf node_modules
@@ -296,6 +307,7 @@ nest-angular-microservices/
 ## 🎯 NEXT STEPS
 
 1. ✅ **Run Services**
+
    ```bash
    bash start-services.sh install-and-start  # Mac/Linux
    # OR

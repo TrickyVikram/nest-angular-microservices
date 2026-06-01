@@ -19,10 +19,10 @@ export class OrderController {
     return this.orderService.findAll();
   }
 
-  @Get(':id')
-  async findOne(@Param('id') id: number): Promise<Order> {
-    return this.orderService.findOne(id);
-  }
+@Get(':id')
+findOne(@Param('id') id: string): Promise<Order> {
+  return this.orderService.findOne(Number(id));
+}
 
   @Post()
   async create(@Body() order: Partial<Order>): Promise<Order> {

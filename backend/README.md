@@ -25,22 +25,26 @@ This is a scalable microservices architecture built with NestJS, featuring an AP
 ## Services Overview
 
 ### 1. API Gateway (Port 3000)
+
 - Central request routing
 - Request/Response proxying
 - CORS handling
 - Service discovery
 
 ### 2. User Service (Port 3001)
+
 - User management
 - User authentication/authorization
 - User profile management
 
 ### 3. Product Service (Port 3002)
+
 - Product catalog management
 - Product pricing
 - Inventory management
 
 ### 4. Order Service (Port 3003)
+
 - Order management
 - Order status tracking
 - Order history
@@ -107,15 +111,15 @@ Edit each service's `src/app.module.ts`:
 
 ```typescript
 TypeOrmModule.forRoot({
-  type: 'mysql',
-  host: 'localhost',
+  type: "mysql",
+  host: "localhost",
   port: 3306,
-  username: 'root',
-  password: 'Micr@1232',
-  database: 'service_name_db',
+  username: "root",
+  password: "Micr@1232",
+  database: "service_name_db",
   entities: [Entity],
   synchronize: true,
-})
+});
 ```
 
 ## Running Services
@@ -136,24 +140,28 @@ bash start-services.sh start
 ### Option 2: Manual Start (Separate Terminals)
 
 Terminal 1 - User Service:
+
 ```bash
 cd backend/user-service
 npm run start:dev
 ```
 
 Terminal 2 - Product Service:
+
 ```bash
 cd backend/product-service
 npm run start:dev
 ```
 
 Terminal 3 - Order Service:
+
 ```bash
 cd backend/order-service
 npm run start:dev
 ```
 
 Terminal 4 - API Gateway:
+
 ```bash
 cd backend/api-gateway
 npm run start:dev
@@ -172,48 +180,51 @@ docker-compose up -d
 ## API Endpoints
 
 ### Base URL
+
 ```
 http://localhost:3000/api
 ```
 
 ### Users
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/users` | Get all users |
-| GET | `/users/:id` | Get user by ID |
-| POST | `/users` | Create new user |
-| PUT | `/users/:id` | Update user |
-| DELETE | `/users/:id` | Delete user |
+| Method | Endpoint     | Description     |
+| ------ | ------------ | --------------- |
+| GET    | `/users`     | Get all users   |
+| GET    | `/users/:id` | Get user by ID  |
+| POST   | `/users`     | Create new user |
+| PUT    | `/users/:id` | Update user     |
+| DELETE | `/users/:id` | Delete user     |
 
 ### Products
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/products` | Get all products |
-| GET | `/products/:id` | Get product by ID |
-| POST | `/products` | Create new product |
-| PUT | `/products/:id` | Update product |
-| DELETE | `/products/:id` | Delete product |
+| Method | Endpoint        | Description        |
+| ------ | --------------- | ------------------ |
+| GET    | `/products`     | Get all products   |
+| GET    | `/products/:id` | Get product by ID  |
+| POST   | `/products`     | Create new product |
+| PUT    | `/products/:id` | Update product     |
+| DELETE | `/products/:id` | Delete product     |
 
 ### Orders
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/orders` | Get all orders |
-| GET | `/orders/:id` | Get order by ID |
-| POST | `/orders` | Create new order |
-| PUT | `/orders/:id` | Update order |
-| DELETE | `/orders/:id` | Delete order |
+| Method | Endpoint      | Description      |
+| ------ | ------------- | ---------------- |
+| GET    | `/orders`     | Get all orders   |
+| GET    | `/orders/:id` | Get order by ID  |
+| POST   | `/orders`     | Create new order |
+| PUT    | `/orders/:id` | Update order     |
+| DELETE | `/orders/:id` | Delete order     |
 
 ## API Examples
 
 ### Get All Users
+
 ```bash
 curl -X GET http://localhost:3000/api/users
 ```
 
 Response:
+
 ```json
 [
   {
@@ -226,6 +237,7 @@ Response:
 ```
 
 ### Create New User
+
 ```bash
 curl -X POST http://localhost:3000/api/users \
   -H "Content-Type: application/json" \
@@ -237,11 +249,13 @@ curl -X POST http://localhost:3000/api/users \
 ```
 
 ### Get All Products
+
 ```bash
 curl -X GET http://localhost:3000/api/products
 ```
 
 Response:
+
 ```json
 [
   {
@@ -253,6 +267,7 @@ Response:
 ```
 
 ### Create New Order
+
 ```bash
 curl -X POST http://localhost:3000/api/orders \
   -H "Content-Type: application/json" \
@@ -265,6 +280,7 @@ curl -X POST http://localhost:3000/api/orders \
 ## Development Commands
 
 ### Build
+
 ```bash
 # Build specific service
 cd backend/<service-name>
@@ -275,21 +291,25 @@ npm run build
 ```
 
 ### Development with Watch Mode
+
 ```bash
 npm run start:dev
 ```
 
 ### Debug Mode
+
 ```bash
 npm run start:debug
 ```
 
 ### Production Start
+
 ```bash
 npm run start:prod
 ```
 
 ### Testing
+
 ```bash
 # Unit tests
 npm run test
@@ -305,6 +325,7 @@ npm run test:e2e
 ```
 
 ### Linting
+
 ```bash
 # Run ESLint
 npm run lint
@@ -314,6 +335,7 @@ npm run lint -- --fix
 ```
 
 ### Code Formatting
+
 ```bash
 npm run format
 ```
@@ -321,11 +343,13 @@ npm run format
 ## Database Management
 
 ### phpMyAdmin Access
+
 - User Database: `http://localhost/phpmyadmin/index.php?route=/database/structure&db=user_db`
 - Product Database: `http://localhost/phpmyadmin/index.php?route=/database/structure&db=product_db`
 - Order Database: `http://localhost/phpmyadmin/index.php?route=/database/structure&db=order_db`
 
 ### MySQL CLI Access
+
 ```bash
 # Connect to MySQL
 mysql -u root -p
@@ -343,6 +367,7 @@ SELECT * FROM users;
 ## Troubleshooting
 
 ### Port Already in Use
+
 ```bash
 # macOS/Linux - Find process using port
 lsof -i :3000
@@ -356,20 +381,24 @@ taskkill /PID <PID> /F
 ```
 
 ### MySQL Connection Error
+
 - Ensure MySQL is running
 - Verify credentials in app.module.ts
 - Check if database exists
 - Verify MySQL port (default: 3306)
 
 ### Service Won't Start
+
 - Check logs in terminal
 - Verify dependencies installed: `npm install`
 - Clear node_modules: `rm -rf node_modules && npm install`
 - Check for TypeScript errors: `npm run build`
 
 ### CORS Issues
+
 - API Gateway handles CORS automatically
 - If issues persist, add CORS to main.ts:
+
 ```typescript
 app.enableCors();
 ```
@@ -434,6 +463,7 @@ docker-compose logs -f <service-name>
 ```
 
 ### Environment Configuration
+
 ```bash
 # Create .env file with production values
 NODE_ENV=production
@@ -473,6 +503,7 @@ This project is licensed under the UNLICENSED license.
 ## Support
 
 For issues or questions:
+
 1. Check the troubleshooting section
 2. Review the logs
 3. Create an issue on GitHub

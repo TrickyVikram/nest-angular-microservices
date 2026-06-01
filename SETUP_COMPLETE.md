@@ -38,12 +38,14 @@ Your microservices architecture is now ready with the following:
 ### 📊 Database Configuration
 
 All services use MySQL with the following credentials:
+
 - **Username**: root
 - **Password**: Micr@1232
 - **Host**: localhost
 - **Port**: 3306
 
 Databases created:
+
 - `user_db` - Contains users table
 - `product_db` - Contains products table
 - `order_db` - Contains orders table
@@ -61,6 +63,7 @@ Databases created:
 ### 🚀 Quick Start
 
 #### Option 1: Using Startup Script
+
 ```bash
 cd /Users/vikramkumar/Desktop/nest-angular-microservices
 chmod +x start-services.sh
@@ -68,6 +71,7 @@ bash start-services.sh install-and-start
 ```
 
 #### Option 2: Manual Installation & Start
+
 ```bash
 # Install dependencies for all services
 cd backend/user-service && npm install
@@ -90,6 +94,7 @@ cd backend/api-gateway && npm run start:dev
 ```
 
 #### Option 3: Using Docker
+
 ```bash
 docker-compose up --build
 ```
@@ -99,6 +104,7 @@ docker-compose up --build
 All endpoints accessible via API Gateway at `http://localhost:3000/api`
 
 **Users**:
+
 - `GET /api/users` - Get all users
 - `GET /api/users/:id` - Get user by ID
 - `POST /api/users` - Create user
@@ -106,6 +112,7 @@ All endpoints accessible via API Gateway at `http://localhost:3000/api`
 - `DELETE /api/users/:id` - Delete user
 
 **Products**:
+
 - `GET /api/products` - Get all products
 - `GET /api/products/:id` - Get product by ID
 - `POST /api/products` - Create product
@@ -113,6 +120,7 @@ All endpoints accessible via API Gateway at `http://localhost:3000/api`
 - `DELETE /api/products/:id` - Delete product
 
 **Orders**:
+
 - `GET /api/orders` - Get all orders
 - `GET /api/orders/:id` - Get order by ID
 - `POST /api/orders` - Create order
@@ -162,6 +170,7 @@ curl -X POST http://localhost:3000/api/orders \
 The system comes with sample data in `init-databases.sql`:
 
 **Users**:
+
 ```json
 {
   "id": 1,
@@ -172,6 +181,7 @@ The system comes with sample data in `init-databases.sql`:
 ```
 
 **Products**:
+
 ```json
 {
   "id": 1,
@@ -181,6 +191,7 @@ The system comes with sample data in `init-databases.sql`:
 ```
 
 **Orders**:
+
 ```json
 {
   "id": 101,
@@ -234,6 +245,7 @@ npm run format
 ### 🐛 Troubleshooting
 
 **Port Already in Use**:
+
 ```bash
 # Find process using port
 lsof -i :3000
@@ -243,11 +255,13 @@ kill -9 <PID>
 ```
 
 **MySQL Connection Error**:
+
 - Ensure MySQL is running
 - Verify credentials
 - Check if databases exist
 
 **Dependencies Issue**:
+
 ```bash
 # Clear and reinstall
 rm -rf node_modules
@@ -265,6 +279,7 @@ npm install
 ### 📞 Support
 
 For detailed information, refer to:
+
 - `MICROSERVICES_SETUP.md` - Complete setup guide
 - `backend/README.md` - Backend documentation
 - Individual service README files

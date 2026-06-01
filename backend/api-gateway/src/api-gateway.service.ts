@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import axios from 'axios';
+import axios, { Method } from 'axios';
 
 @Injectable()
 export class ApiGatewayService {
@@ -7,9 +7,15 @@ export class ApiGatewayService {
   private readonly productServiceUrl = 'http://localhost:3002';
   private readonly orderServiceUrl = 'http://localhost:3003';
 
-  async proxyRequest(service: string, method: string, path: string, data?: any) {
+  async proxyRequest<T = any>(
+    service: string,
+    method: Method,
+    path: string,
+    data?: unknown,
+  ): Promise<T> {
     try {
       let url: string;
+
       switch (service) {
         case 'users':
           url = `${this.userServiceUrl}${path}`;
@@ -24,15 +30,17 @@ export class ApiGatewayService {
           throw new Error('Invalid service');
       }
 
-      const response = await axios({
+      const response = await axios.request<T>({
         method,
         url,
         data,
       });
 
       return response.data;
-    } catch (error) {
-      throw new Error(`Error calling ${service} service: ${error.message}`);
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : 'Unknown error';
+
+      throw new Error(`Error calling ${service} service: ${message}`);
     }
   }
 }
